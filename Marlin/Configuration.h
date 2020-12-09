@@ -474,7 +474,7 @@
 #define HEATER_5_MAXTEMP 305
 #define HEATER_6_MAXTEMP 305
 #define HEATER_7_MAXTEMP 305
-#define BED_MAXTEMP      120    // Buildtak Flexplate Limit is 120 C, default is 150
+#define BED_MAXTEMP      115    // 115C used as Buildtak Flexplate Limit is 120 C, default is 150
 
 //===========================================================================
 //============================= PID Settings ================================
