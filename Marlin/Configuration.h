@@ -1142,26 +1142,27 @@
 // :[-1,1]
 //defined if a TAZ 6 & !USE_HOME_BUTTON
 //#define X_HOME_DIR -1   // Home left
-//#define Y_HOME_DIR -1   // Home bed forward
+//#define Y_HOME_DIR -1   // Home bed backward
 //#define Z_HOME_DIR -1   // Home to top
 
 //defined if a TAZ 6 & USE_HOME_BUTTON
 #define X_HOME_DIR -1   // Home left
-#define Y_HOME_DIR  1   // Home bed forward
+#define Y_HOME_DIR -1   // Home bed forward
 #define Z_HOME_DIR -1   // Home to top
 
 // @section machine
 
-// The size of the print bed
-#define X_BED_SIZE 300  // TAZ 6 values
-#define Y_BED_SIZE 303  // TAZ 6 values
+// The size of the print bed 
+// TAZ 6 standard bed size is 280mm (printing surface)
+#define X_BED_SIZE 280  // TAZ 6 Printing surface (300mm)
+#define Y_BED_SIZE 280  // TAZ 6 Printing surface (300mm)
 
 // Travel limits (mm) after homing, corresponding to endstop positions.
 #define X_MIN_POS -20
 #define Y_MIN_POS -20
 #define Z_MIN_POS 0
-#define X_MAX_POS X_BED_SIZE
-#define Y_MAX_POS Y_BED_SIZE
+#define X_MAX_POS 300 
+#define Y_MAX_POS 303
 #define Z_MAX_POS 270
 
 /**
