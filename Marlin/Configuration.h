@@ -719,7 +719,7 @@
 
 // Enable this feature if all enabled endstop pins are interrupt-capable.
 // This will remove the need to poll the interrupt pins, saving many CPU cycles.
-//#define ENDSTOP_INTERRUPTS_FEATURE
+//#define ENDSTOP_INTERRUPTS_FEATURE  // RAMBO does not support interrupts on all pins
 
 /**
  * Endstop Noise Threshold
@@ -863,10 +863,10 @@
  * The probe replaces the Z-MIN endstop and is used for Z homing.
  * (Automatically enables USE_PROBE_FOR_Z_HOMING.)
  */
-//#define Z_MIN_PROBE_USES_Z_MIN_ENDSTOP_PIN      // LULZBOT_Z_MIN_USES_Z_PROBE_ENABLED
+#define Z_MIN_PROBE_USES_Z_MIN_ENDSTOP_PIN      // BLTouch TAZ 6 
 
 // Force the use of the probe for Z-axis homing
-//#define USE_PROBE_FOR_Z_HOMING
+#define USE_PROBE_FOR_Z_HOMING                  // BLTouch TAZ 6
 
 /**
  * Z_MIN_PROBE_PIN
@@ -910,7 +910,7 @@
  * Use the nozzle as the probe, as with a conductive
  * nozzle system or a piezo-electric smart effector.
  */
-#define NOZZLE_AS_PROBE // Enabled for Stock TAZ 6 conductive bed leveling
+//#define NOZZLE_AS_PROBE // Disabled Stock TAZ 6 conductive bed leveling
 
 /**
  * Z Servo Probe, such as an endstop switch on a rotating arm.
@@ -921,7 +921,7 @@
 /**
  * The BLTouch probe uses a Hall effect sensor and emulates a servo.
  */
-//#define BLTOUCH
+#define BLTOUCH     // BLTouch is enabled
 
 /**
  * Pressure sensor with a BLTouch-like interface
@@ -1010,11 +1010,14 @@
  */
 
 // New conversion of TAZ 6 values
-#define NOZZLE_TO_PROBE_OFFSET { 0, 0, -1.2 }
+// Offsets are for custom mount on stock single extruder. 
+// BLTouch probe is 26mm LEFT AND 23MM FRONT  
+// BLTouch probe Z offset range 2.3mm <-> 4.3mm
+#define NOZZLE_TO_PROBE_OFFSET { -26, -23, -2.35 }
 
 // Most probes should stay away from the edges of the bed, but
 // with NOZZLE_AS_PROBE this can be negative for a wider probing area.
-#define PROBING_MARGIN -8 // Picked edges of bed size
+#define PROBING_MARGIN 30 // 30mm inwards from printing bed edges
 
 // X and Y axis travel speed (mm/min) between probes
 #define XY_PROBE_SPEED (6000)
@@ -1035,7 +1038,7 @@
  * A total of 2 does fast/slow probes with a weighted average.
  * A total of 3 or more adds more slow probes, taking the average.
  */
-#define MULTIPLE_PROBING 2
+#define MULTIPLE_PROBING 3
 //#define EXTRA_PROBING    1
 
 /**
@@ -1304,8 +1307,8 @@
  *   With an LCD controller the process is guided step-by-step.
  */
 //#define AUTO_BED_LEVELING_3POINT
-#define AUTO_BED_LEVELING_LINEAR
-//#define AUTO_BED_LEVELING_BILINEAR
+//#define AUTO_BED_LEVELING_LINEAR      // Stock probing disabled
+#define AUTO_BED_LEVELING_BILINEAR      // Enabled for BLTouch
 //#define AUTO_BED_LEVELING_UBL
 //#define MESH_BED_LEVELING
 
