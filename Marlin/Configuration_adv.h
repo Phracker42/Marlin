@@ -1096,7 +1096,7 @@
       #define PROBE_OFFSET_WIZARD_START_Z -1.5
 
       // Set a convenient position to do the calibration (probing point and nozzle/bed-distance)
-      //#define PROBE_OFFSET_WIZARD_XY_POS { X_CENTER, Y_CENTER }
+      #define PROBE_OFFSET_WIZARD_XY_POS { 200, 30 }
     #endif
   #endif
 
