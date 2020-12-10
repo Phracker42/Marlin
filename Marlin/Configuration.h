@@ -22,6 +22,7 @@
 #pragma once
 
 //#define CONFIG_EXAMPLES_DIR "AlephObjects/TAZ4"
+// TAZ 6 template was created using MARLIN's TAZ4 example. 
 
 /**
  * Configuration.h
@@ -137,7 +138,7 @@
 #endif
 
 // Name displayed in the LCD "Ready" message and Info menu
-#define CUSTOM_MACHINE_NAME "TAZ 6"
+#define CUSTOM_MACHINE_NAME "TAZ 6 BLTouch"
 
 // Printer's unique ID, used by some programs to differentiate between machines.
 // Choose your own or use a service like https://www.uuidgenerator.net/version4
@@ -770,7 +771,7 @@
  * Override with M203
  *                                      X, Y, Z, E0 [, E1[, E2...]]
  */
-#define DEFAULT_MAX_FEEDRATE          { 300, 300, 3, 25 }           //TAZ 6 values
+#define DEFAULT_MAX_FEEDRATE          { 300, 300, 10, 25 }           //TAZ 6 values were { 300, 300, 3, 25 } 
 
 //#define LIMITED_MAX_FR_EDITING        // Limit edit via M203 or LCD to DEFAULT_MAX_FEEDRATE * 2
 #if ENABLED(LIMITED_MAX_FR_EDITING)
@@ -1017,18 +1018,19 @@
 
 // Most probes should stay away from the edges of the bed, but
 // with NOZZLE_AS_PROBE this can be negative for a wider probing area.
-#define PROBING_MARGIN 30 // 30mm inwards from printing bed edges
+#define PROBING_MARGIN 15 // 15mm inwards from printing bed edges
 
 // X and Y axis travel speed (mm/min) between probes
-#define XY_PROBE_SPEED (6000)
+#define XY_PROBE_SPEED (8000) // stock is 6000
 
 // Feedrate (mm/min) for the first approach when double-probing (MULTIPLE_PROBING == 2)
 //#define Z_PROBE_SPEED_FAST HOMING_FEEDRATE_Z
-#define Z_PROBE_SPEED_FAST (8*60)
+//#define Z_PROBE_SPEED_FAST (8*60)
+#define Z_PROBE_SPEED_FAST (6*60)
 
 // Feedrate (mm/min) for the "accurate" probe of each point
-//#define Z_PROBE_SPEED_SLOW (Z_PROBE_SPEED_FAST / 2)
-#define Z_PROBE_SPEED_SLOW (1*60)
+//#define Z_PROBE_SPEED_SLOW (Z_PROBE_SPEED_FAST / 2) // enabled
+#define Z_PROBE_SPEED_SLOW (1*60)                 //disabled
 /**
  * Multiple Probing
  *
@@ -1056,11 +1058,11 @@
  *     But: `M851 Z+1` with a CLEARANCE of 2  =>  2mm from bed to nozzle.
  */
 #define Z_CLEARANCE_DEPLOY_PROBE    5 // Z Clearance for Deploy/Stow
-#define Z_CLEARANCE_BETWEEN_PROBES  5 // Z Clearance between probe points
-#define Z_CLEARANCE_MULTI_PROBE     5 // Z Clearance between multiple probes
+#define Z_CLEARANCE_BETWEEN_PROBES  2 // Z Clearance between probe points
+#define Z_CLEARANCE_MULTI_PROBE     2 // Z Clearance between multiple probes
 //#define Z_AFTER_PROBING           5 // Z position after probing is done
 
-#define Z_PROBE_LOW_POINT           0 // Farthest distance below the trigger-point to go before stopping
+#define Z_PROBE_LOW_POINT          -3 // Farthest distance below the trigger-point to go before stopping
 
 // For M851 give a range for adjusting the Z probe offset
 #define Z_PROBE_OFFSET_RANGE_MIN -2
@@ -1358,7 +1360,7 @@
 #if EITHER(AUTO_BED_LEVELING_LINEAR, AUTO_BED_LEVELING_BILINEAR)
 
   // Set the number of grid points per dimension.
-  #define GRID_MAX_POINTS_X 2
+  #define GRID_MAX_POINTS_X 7
   #define GRID_MAX_POINTS_Y GRID_MAX_POINTS_X
 
   // Probe along the Y axis, advancing X after each column
@@ -1374,7 +1376,14 @@
     // Experimental Subdivision of the grid by Catmull-Rom method.
     // Synthesizes intermediate points to produce a more detailed mesh.
     //
-    //#define ABL_BILINEAR_SUBDIVISION
+
+    /*
+    *If you have SRAM to spare, this option will multiply the resolution of the bilinear grid using the Catmull-Rom subdivision method. 
+    *This option only applies to bilinear leveling. If the default value of 3 is too expensive, try 2 or 1.
+    * (In Marlin 1.1.1, the default grid will be stored in PROGMEM, as UBL now does.)
+    */
+   
+    #define ABL_BILINEAR_SUBDIVISION
     #if ENABLED(ABL_BILINEAR_SUBDIVISION)
       // Number of subdivisions between probe points
       #define BILINEAR_SUBDIVISIONS 3
@@ -1471,13 +1480,13 @@
 #define Z_SAFE_HOMING  //Enabled for TAZ 6
 
 #if ENABLED(Z_SAFE_HOMING)
-  #define Z_SAFE_HOMING_X_POINT -19  // X point for Z homing
-  #define Z_SAFE_HOMING_Y_POINT 258  // Y point for Z homing
+  #define Z_SAFE_HOMING_X_POINT ((X_BED_SIZE)/2)  // Z homing towards the middle of X axis
+  #define Z_SAFE_HOMING_Y_POINT ((Y_BED_SIZE)/2)  // Z homing towards the middle of Y axis
 #endif
 
 // Homing speeds (mm/min)
 #define HOMING_FEEDRATE_XY (50*60) //Values of TAZ6
-#define HOMING_FEEDRATE_Z  (3*60) //Values of TAZ6
+#define HOMING_FEEDRATE_Z  (5*60) //Values of TAZ6 was 3*60
 
 // Validate that endstops are triggered on homing moves
 #define VALIDATE_HOMING_ENDSTOPS
