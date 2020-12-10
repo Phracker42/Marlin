@@ -910,7 +910,7 @@
 
   #if ENABLED(BACKLASH_GCODE)
     // Measure the Z backlash when probing (G29) and set with "M425 Z"
-    // #define MEASURE_BACKLASH_WHEN_PROBING      // Set for TAZ 6
+    #define MEASURE_BACKLASH_WHEN_PROBING      // Set for TAZ 6
 
     #if ENABLED(MEASURE_BACKLASH_WHEN_PROBING)
       // When measuring, the probe will move up to BACKLASH_MEASUREMENT_LIMIT

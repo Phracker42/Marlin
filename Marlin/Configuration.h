@@ -550,10 +550,15 @@
   //#define MIN_BED_POWER 0
   //#define PID_BED_DEBUG // Sends debug data to the serial port.
 
+  // 24V 360W silicone heater from NPH on 3mm borosilicate with added mass of Buildtak Flexplate
+  #define DEFAULT_bedKp  106.95
+  #define DEFAULT_bedKi   18.92
+  #define DEFAULT_bedKd  402.99
+
   // 24V 360W silicone heater from NPH on 3mm borosilicate (TAZ 2.2+)
-  #define DEFAULT_bedKp  162
-  #define DEFAULT_bedKi   17
-  #define DEFAULT_bedKd  378
+  //#define DEFAULT_bedKp  162
+  //#define DEFAULT_bedKi   17
+  //#define DEFAULT_bedKd  378
 
   // 12v 400W silicone heater from QUDB into 3mm borosilicate (TAZ 1.0+)
   // from pidautotune
@@ -1382,7 +1387,7 @@
     *This option only applies to bilinear leveling. If the default value of 3 is too expensive, try 2 or 1.
     * (In Marlin 1.1.1, the default grid will be stored in PROGMEM, as UBL now does.)
     */
-   
+
     #define ABL_BILINEAR_SUBDIVISION
     #if ENABLED(ABL_BILINEAR_SUBDIVISION)
       // Number of subdivisions between probe points
