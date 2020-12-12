@@ -1093,7 +1093,7 @@
       // Enable to init the Probe Z-Offset when starting the Wizard.
       // Use the estimated nozzle-to-probe Z offset, plus a little more.
       //
-      #define PROBE_OFFSET_WIZARD_START_Z -1.5
+      #define PROBE_OFFSET_WIZARD_START_Z -1.0
 
       // Set a convenient position to do the calibration (probing point and nozzle/bed-distance)
       #define PROBE_OFFSET_WIZARD_XY_POS { 200, 30 }
@@ -1456,9 +1456,9 @@
   //#define BOOT_MARLIN_LOGO_ANIMATED // Animated Marlin logo. Costs ~‭3260 (or ~940) bytes of PROGMEM.
 
   // Frivolous Game Options
-  #define MARLIN_BRICKOUT
-  #define MARLIN_INVADERS
-  #define MARLIN_SNAKE
+  //#define MARLIN_BRICKOUT
+  //#define MARLIN_INVADERS
+  //#define MARLIN_SNAKE
   //#define GAMES_EASTER_EGG          // Add extra blank lines above the "Games" sub-menu
 
 #endif // HAS_MARLINUI_U8GLIB

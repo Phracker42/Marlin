@@ -776,7 +776,7 @@
  * Override with M203
  *                                      X, Y, Z, E0 [, E1[, E2...]]
  */
-#define DEFAULT_MAX_FEEDRATE          { 300, 300, 10, 25 }           //TAZ 6 values were { 300, 300, 3, 25 } 
+#define DEFAULT_MAX_FEEDRATE          { 300, 300, 8, 25 }           //TAZ 6 values were { 300, 300, 3, 25 } 
 
 //#define LIMITED_MAX_FR_EDITING        // Limit edit via M203 or LCD to DEFAULT_MAX_FEEDRATE * 2
 #if ENABLED(LIMITED_MAX_FR_EDITING)
@@ -1019,14 +1019,14 @@
 // Offsets are for custom mount on stock single extruder. 
 // BLTouch probe is 26mm LEFT AND 23MM FRONT  
 // BLTouch probe Z offset range 2.3mm <-> 4.3mm
-#define NOZZLE_TO_PROBE_OFFSET { -26, -23, -2.35 }
+#define NOZZLE_TO_PROBE_OFFSET { -26, -23, -1.0}
 
 // Most probes should stay away from the edges of the bed, but
 // with NOZZLE_AS_PROBE this can be negative for a wider probing area.
 #define PROBING_MARGIN 15 // 15mm inwards from printing bed edges
 
 // X and Y axis travel speed (mm/min) between probes
-#define XY_PROBE_SPEED (8000) // stock is 6000
+#define XY_PROBE_SPEED (10000) // stock is 6000
 
 // Feedrate (mm/min) for the first approach when double-probing (MULTIPLE_PROBING == 2)
 //#define Z_PROBE_SPEED_FAST HOMING_FEEDRATE_Z
@@ -1034,8 +1034,8 @@
 #define Z_PROBE_SPEED_FAST (6*60)
 
 // Feedrate (mm/min) for the "accurate" probe of each point
-//#define Z_PROBE_SPEED_SLOW (Z_PROBE_SPEED_FAST / 2) // enabled
-#define Z_PROBE_SPEED_SLOW (1*60)                 //disabled
+#define Z_PROBE_SPEED_SLOW (Z_PROBE_SPEED_FAST / 2) // enabled
+//#define Z_PROBE_SPEED_SLOW (2*60)                 //disabled
 /**
  * Multiple Probing
  *
@@ -1045,7 +1045,7 @@
  * A total of 2 does fast/slow probes with a weighted average.
  * A total of 3 or more adds more slow probes, taking the average.
  */
-#define MULTIPLE_PROBING 3
+#define MULTIPLE_PROBING 2
 //#define EXTRA_PROBING    1
 
 /**
@@ -1365,7 +1365,7 @@
 #if EITHER(AUTO_BED_LEVELING_LINEAR, AUTO_BED_LEVELING_BILINEAR)
 
   // Set the number of grid points per dimension.
-  #define GRID_MAX_POINTS_X 7
+  #define GRID_MAX_POINTS_X 15
   #define GRID_MAX_POINTS_Y GRID_MAX_POINTS_X
 
   // Probe along the Y axis, advancing X after each column
@@ -1388,10 +1388,10 @@
     * (In Marlin 1.1.1, the default grid will be stored in PROGMEM, as UBL now does.)
     */
 
-    #define ABL_BILINEAR_SUBDIVISION
+    //#define ABL_BILINEAR_SUBDIVISION
     #if ENABLED(ABL_BILINEAR_SUBDIVISION)
       // Number of subdivisions between probe points
-      #define BILINEAR_SUBDIVISIONS 3
+      #define BILINEAR_SUBDIVISIONS 1
     #endif
 
   #endif
@@ -1491,7 +1491,7 @@
 
 // Homing speeds (mm/min)
 #define HOMING_FEEDRATE_XY (50*60) //Values of TAZ6
-#define HOMING_FEEDRATE_Z  (5*60) //Values of TAZ6 was 3*60
+#define HOMING_FEEDRATE_Z  (4*60) //Values of TAZ6 was 3*60
 
 // Validate that endstops are triggered on homing moves
 #define VALIDATE_HOMING_ENDSTOPS
