@@ -73,8 +73,8 @@
 // @section info
 
 // Author info of this build printed to the host during boot and M115
-#define STRING_CONFIG_H_AUTHOR "(Phracker42, TAZ 6)" // Who made the changes.
-//#define CUSTOM_VERSION_FILE Version.h // Path from the root directory (no quotes)
+//#define STRING_CONFIG_H_AUTHOR "(Phracker42, TAZ 6)" // Who made the changes.
+#define CUSTOM_VERSION_FILE Version.h // Path from the root directory (no quotes)
 
 /**
  * *** VENDORS PLEASE READ ***
@@ -1170,7 +1170,7 @@
 // Travel limits (mm) after homing, corresponding to endstop positions.
 #define X_MIN_POS -20
 #define Y_MIN_POS -20
-#define Z_MIN_POS 0
+#define Z_MIN_POS -0.05
 #define X_MAX_POS 300 
 #define Y_MAX_POS 303
 #define Z_MAX_POS 270
@@ -1404,7 +1404,7 @@
 
   //#define MESH_EDIT_GFX_OVERLAY   // Display a graphics overlay while editing the mesh
 
-  #define MESH_INSET  1             // Set Mesh bounds as an inset region of the bed
+  #define MESH_INSET  10             // Set Mesh bounds as an inset region of the bed
   #define GRID_MAX_POINTS_X 15      // Don't use more than 15 points per axis, implementation limited.
   #define GRID_MAX_POINTS_Y GRID_MAX_POINTS_X
 

@@ -34,7 +34,7 @@
  * Verbose version identifier which should contain a reference to the location
  * from where the binary was downloaded or the source code was compiled.
  */
-//#define DETAILED_BUILD_VERSION SHORT_BUILD_VERSION
+#define DETAILED_BUILD_VERSION SHORT_BUILD_VERSION
 
 /**
  * The STRING_DISTRIBUTION_DATE represents when the binary file was built,
@@ -46,7 +46,7 @@
 /**
  * Defines a generic printer name to be output to the LCD after booting Marlin.
  */
-//#define MACHINE_NAME "3D Printer"
+#define MACHINE_NAME "TAZ 6"
 
 /**
  * The SOURCE_CODE_URL is the location where users will find the Marlin Source
@@ -65,7 +65,7 @@
  * The WEBSITE_URL is the location where users can get more information such as
  * documentation about a specific Marlin release.
  */
-//#define WEBSITE_URL "https://marlinfw.org"
+#define WEBSITE_URL "https://marlinfw.org"
 
 /**
  * Set the vendor info the serial USB interface, if changable
